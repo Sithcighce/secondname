@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Volume2, CheckCircle2 } from "lucide-react";
+import ttsService from "@/lib/ttsService";
 
 interface Props {
   content: any;
@@ -11,14 +12,31 @@ interface Props {
 
 export default function ListeningQuestion({ content, onComplete }: Props) {
   const [playingId, setPlayingId] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const playAudio = (id: number) => {
-    if (playingId) return; // Prevent multiple plays
+  const playAudio = async (id: number, text: string) => {
+    if (playingId || isLoading) return;
+    
+    setIsLoading(true);
     setPlayingId(id);
-    // Mock play duration
-    setTimeout(() => {
+
+    try {
+      await ttsService.play(
+        text,
+        () => {
+          setPlayingId(null);
+          setIsLoading(false);
+        },
+        () => {
+          setPlayingId(null);
+          setIsLoading(false);
+        }
+      );
+    } catch (error) {
+      console.error("TTS playback failed:", error);
       setPlayingId(null);
-    }, 2000);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -34,7 +52,7 @@ export default function ListeningQuestion({ content, onComplete }: Props) {
             <motion.div
               key={item.id}
               whileTap={{ scale: 0.98 }}
-              onClick={() => playAudio(item.id)}
+              onClick={() => playAudio(item.id, item.text)}
               className={`p-4 rounded-xl border-2 flex items-center gap-4 cursor-pointer transition-all ${
                 isPlaying
                   ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"

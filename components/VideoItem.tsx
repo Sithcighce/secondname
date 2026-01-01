@@ -17,6 +17,7 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
   const [isMuted, setIsMuted] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(data.likes);
+  const hasPlayedRef = useRef(false);
   const router = useRouter();
 
   const handleStartChallenge = (e: React.MouseEvent) => {
@@ -36,44 +37,54 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
   };
 
   useEffect(() => {
-    if (isActive && videoRef.current) {
-      const video = videoRef.current;
-      
-      // Reset to beginning when appearing
-      video.currentTime = 0;
+    const video = videoRef.current;
+    if (!video) return;
 
-      // 1. Try to play with sound
-      video.muted = false;
-      const playPromise = video.play();
-
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setIsMuted(false);
-          })
-          .catch((error) => {
-            console.log("Autoplay with sound prevented, switching to muted:", error);
-            // 2. Fallback: Play muted
-            video.muted = true;
-            video.play()
-              .then(() => {
-                setIsMuted(true);
-              })
-              .catch((e) => console.error("Autoplay failed completely", e));
-          });
+    if (isActive) {
+      // 只在第一次激活时重置到开头
+      if (!hasPlayedRef.current) {
+        video.currentTime = 0;
+        hasPlayedRef.current = true;
       }
+
+      // 尝试播放
+      const playVideo = async () => {
+        try {
+          video.muted = false;
+          await video.play();
+          setIsMuted(false);
+        } catch (error) {
+          // 降级为静音播放（浏览器自动播放策略）
+          try {
+            video.muted = true;
+            setIsMuted(true);
+            await video.play();
+          } catch (e) {
+            console.error("Video play failed:", e);
+          }
+        }
+      };
+      
+      playVideo();
     } else {
-      videoRef.current?.pause();
+      // 暂停视频
+      video.pause();
+      setIsPlaying(false);
+      hasPlayedRef.current = false; // 重置，下次滑回来时从头播放
     }
   }, [isActive]);
 
   const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      const playPromise = video.play();
+      if (playPromise) {
+        playPromise.catch(e => console.error("Play failed:", e));
       }
+    } else {
+      video.pause();
     }
   };
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, ChevronDown } from "lucide-react";
+import ttsService from "@/lib/ttsService";
 
 interface StoryContent {
   english: string;
@@ -19,35 +20,42 @@ interface Props {
 export default function StoryItem({ content, isLast, onNext }: Props) {
   const [revealed, setRevealed] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const hasAutoPlayedRef = useRef(false);
 
-  const playAudio = useCallback(() => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      // Stop any currently playing audio
-      window.speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(content.english);
-      utterance.lang = "en-US"; // Set to American English
-      utterance.rate = 0.9;     // Slightly slower for learning
-      
-      // Update state when speaking starts and ends
+  const playAudio = useCallback(async () => {
+    if (isPlaying || isLoading) return;
+    
+    setIsLoading(true);
+    
+    try {
+      await ttsService.play(
+        content.english,
+        () => {
+          setIsPlaying(false);
+          setIsLoading(false);
+        },
+        () => {
+          setIsPlaying(false);
+          setIsLoading(false);
+        }
+      );
       setIsPlaying(true);
-      utterance.onend = () => setIsPlaying(false);
-      utterance.onerror = () => setIsPlaying(false);
-
-      window.speechSynthesis.speak(utterance);
-    } else {
-      // Fallback for browsers without support
-      setIsPlaying(true);
-      setTimeout(() => setIsPlaying(false), 2000);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("TTS playback failed:", error);
+      setIsPlaying(false);
+      setIsLoading(false);
     }
-  }, [content.english]);
+  }, [content.english, isPlaying, isLoading]);
 
-  // Auto-play audio when this item first appears (if it is the last one added)
+  // Auto-play audio ONLY ONCE when this item first appears
   useEffect(() => {
-    if (isLast) {
+    if (isLast && !hasAutoPlayedRef.current) {
+      hasAutoPlayedRef.current = true;
       playAudio();
     }
-  }, [isLast, playAudio]);
+  }, [isLast]);
 
   const toggleReveal = () => {
     setRevealed(!revealed);
@@ -74,7 +82,14 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
              </h2>
              <button 
                 onClick={(e) => { e.stopPropagation(); playAudio(); }}
-                className={`p-3 rounded-full flex-shrink-0 transition-colors shadow-sm ${isPlaying ? "bg-blue-500 text-white" : "bg-gray-50 dark:bg-gray-700 text-blue-500"}`}
+                disabled={isLoading}
+                className={`p-3 rounded-full flex-shrink-0 transition-colors shadow-sm ${
+                  isLoading 
+                    ? "bg-gray-300 dark:bg-gray-600 text-gray-500 cursor-wait" 
+                    : isPlaying 
+                    ? "bg-blue-500 text-white" 
+                    : "bg-gray-50 dark:bg-gray-700 text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-600"
+                }`}
              >
                 <Volume2 size={20} className={isPlaying ? "animate-pulse" : ""} />
              </button>
