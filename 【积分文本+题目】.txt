@@ -1,0 +1,107 @@
+### 📖 故事正文 + 题目 + 翻译
+
+1. **Tom is a college student who only leaves his dorm for bubble tea and pizza.**  
+   汤姆是个大学生，除了买奶茶和披萨，根本不出宿舍。
+
+2. **One night, while doomscrolling, he sees a viral math video: “What is integration?”**  
+   某天深夜刷手机，他刷到一个爆款视频：《积分到底是什么？》
+
+3. **He watches. “Wait… it’s just adding tiny bits to get the whole?”**  
+   他点开一看：“等等……不就是把无数小碎片加起来，得到整体吗？”
+
+> ❓**Question 1（中文选英文）**  
+> “把很多小部分加起来得到整体”用英语最自然的说法是？  
+> A. Multiply big numbers to get the answer  
+> B. Add up tiny pieces to find the whole  
+> C. Subtract the change from the start  
+> D. Count the pizza slices one by one  
+> ✅ **Answer: B**
+
+4. **His brain lights up. “So if I know how cheese *changes* on the pizza… I can find the total cheese?!”**  
+   他突然开窍：“所以，如果我知道芝士在披萨上怎么‘分布’的，就能算出总共用了多少？！”
+
+5. **He texts his math-savvy friend Luna: “Bro, is this real?”**  
+   他火速发微信给数学大神露娜：“姐妹，这玩意儿靠谱吗？”
+
+6. **She replies instantly: “Yes. Indefinite = many answers (+C). Definite = one number (from A to B).”**  
+   她秒回：“靠谱！不定积分 = 一堆答案（+C）；定积分 = 一个数（从A到B）。”
+
+> ❓**Question 2（英文选中文）**  
+> In the story, what does “+C” mean?  
+> A. 芝士的种类（Cheese type）  
+> B. 一个未知的常数（An unknown constant）  
+> C. 红包金额（Red packet amount）  
+> D. 披萨价格（Pizza price）  
+> ✅ **Answer: B**
+
+7. **Tom tries it. He calculates the sauce on his takeout dumplings.**  
+   汤姆试了试，用它算出了外卖饺子上淋了多少酱。
+
+8. **He even measures how much hot water he wastes while waiting for instant noodles.**  
+   他甚至算出自己泡面时浪费了多少热水。
+
+9. **Next day, he posts a meme: “Me using calculus to justify extra cheese.”**  
+   第二天，他发了个梗图：“用微积分给自己多加芝士找借口的我。”
+
+10. **It gets 10 likes. Eight are from bots. Two are Luna and his mom (who somehow found his WeChat Moments).**  
+    收获10个赞——8个是机器人，2个是露娜和他妈妈（不知怎么翻到了他的朋友圈）。
+
+11. **He shrugs and opens Meituan to order another pizza.**  
+    他耸耸肩，打开美团，又要了一张披萨。
+
+12. **In the “special instructions” box, he types:**  
+    他在“备注”栏里敲下：
+
+13. **“Please use extra cheese. I’ve already integrated it into my monthly allowance.”**  
+    “麻烦多加芝士，我已经把它‘积’进本月生活费了。”
+
+14. **Then he adds, just for fun:**  
+    接着又调皮地补了一句：
+
+15. **“And don’t worry—the +C is my red packet for you.”**  
+    “放心，那个 +C 就是我给你的红包。”
+
+> ❓**Question 3（阅读理解）**  
+> Why does Tom say “+C is my red packet”?  
+> A. Because he wants to pay a tip like in Western countries  
+> B. Because he’s joking that the math constant is like a friendly gift  
+> C. Because the delivery guy asked for extra money  
+> D. Because +C stands for “cash” in Chinese  
+> ✅ **Answer: B**  
+> （解析：他是在用数学梗开玩笑，把抽象的“+C”比作中国人熟悉的“红包”——一种随心意的小礼物，不是小费！）
+
+16. **The delivery guy sees the note, laughs, and gives him an extra garlic bread.**  
+    外卖小哥看到备注，笑了，顺手多塞了一片蒜香面包。
+
+17. **Tom thinks: “Who said calculus isn’t useful in real life?”**  
+    汤姆心想：“谁说微积分在现实里没用？”
+
+
+---
+
+### 🔗 **Vocabulary Matching: Match the English word/phrase with its correct Chinese meaning**
+
+| **English**                     | **Chinese**                     |
+|-------------------------------|--------------------------------|
+| 1. integration                | A. 不定积分（答案不唯一）     |
+| 2. indefinite integral        | B. 定积分（有起点和终点）     |
+| 3. definite integral          | C. 积分（把微小部分加起来求总量）|
+| 4. +C (constant)              | D. 常数（代表所有可能的“偏移量”）|
+| 5. add up tiny pieces         | E. 把无数微小部分加起来       |
+| 6. viral video                | F. 爆款视频 / 全网热传的视频   |
+| 7. Meituan                    | G. 美团（中国常用外卖/生活服务平台）|
+| 8. red packet                 | H. 红包（微信/支付宝中发送的现金礼物）|
+
+---
+
+### ✅ **Answer Key（答案）**
+1 — C  
+2 — A  
+3 — B  
+4 — D  
+5 — E  
+6 — F  
+7 — G  
+8 — H
+
+---
