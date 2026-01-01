@@ -41,7 +41,7 @@ export default function ListeningQuestion({ content, onComplete }: Props) {
 
   return (
     <div className="w-full flex flex-col gap-6">
-      <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+      <h2 className="text-xl font-bold text-gray-800 mb-4">
         Listen to the sentences
       </h2>
       
@@ -55,15 +55,15 @@ export default function ListeningQuestion({ content, onComplete }: Props) {
               onClick={() => playAudio(item.id, item.text)}
               className={`p-4 rounded-xl border-2 flex items-center gap-4 cursor-pointer transition-all ${
                 isPlaying
-                  ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-                  : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+                  ? "border-[#FCDC2A] bg-[#FFFDE7]"
+                  : "border-gray-200 bg-white"
               }`}
             >
-              <div className={`p-3 rounded-full ${isPlaying ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-500 dark:bg-gray-700"}`}>
+              <div className={`p-3 rounded-full ${isPlaying ? "bg-[#FCDC2A] text-white" : "bg-gray-100 text-gray-400"}`}>
                 <Volume2 size={24} className={isPlaying ? "animate-pulse" : ""} />
               </div>
               <div className="flex-1">
-                <p className="text-lg font-medium text-gray-700 dark:text-gray-200">{item.text}</p>
+                <p className="text-lg font-medium text-gray-700">{item.text}</p>
               </div>
             </motion.div>
           );
@@ -72,7 +72,7 @@ export default function ListeningQuestion({ content, onComplete }: Props) {
 
       <button
         onClick={onComplete}
-        className="mt-8 w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl shadow-lg border-b-4 border-blue-800 active:border-b-0 active:translate-y-1 transition-all"
+        className="mt-8 w-full bg-[#88D66C] hover:bg-[#76c45b] text-white font-bold py-4 rounded-xl shadow-lg border-b-4 border-[#68a652] active:border-b-0 active:translate-y-1 transition-all"
       >
         CONTINUE
       </button>

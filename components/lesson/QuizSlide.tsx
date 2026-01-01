@@ -46,12 +46,12 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col items-center w-full max-w-md mx-auto relative z-10"
     >
-      <div className="w-full bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 flex flex-col gap-6">
-         <div className="flex items-center gap-2 text-indigo-500 font-bold uppercase text-xs tracking-wider">
+      <div className="w-full bg-white/90 backdrop-blur-sm p-6 rounded-3xl shadow-xl border border-white/50 flex flex-col gap-6">
+         <div className="flex items-center gap-2 text-[#88D66C] font-bold uppercase text-xs tracking-wider">
             <HelpCircle size={16} />
             Quick Quiz
          </div>
-         <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+         <h3 className="text-xl font-bold text-gray-800">
             {content.question}
          </h3>
 
@@ -60,14 +60,14 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
                 const isSelected = selected === opt;
                 const isCorrect = opt === content.correctAnswer;
                 
-                let style = "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-indigo-300";
+                let style = "bg-white border-gray-100 hover:border-[#FCDC2A]";
                 
                 if (showExplanation) {
-                    if (isCorrect) style = "bg-green-100 dark:bg-green-900/30 border-green-500 ring-1 ring-green-500";
-                    else if (isSelected) style = "bg-red-50 dark:bg-red-900/20 border-red-200 opacity-50";
-                    else style = "opacity-50 bg-gray-50 dark:bg-gray-900 border-transparent";
+                    if (isCorrect) style = "bg-[#E8F5E9] border-[#88D66C] ring-1 ring-[#88D66C]";
+                    else if (isSelected) style = "bg-red-50 border-red-200 opacity-50";
+                    else style = "opacity-50 bg-gray-50 border-transparent";
                 } else if (isSelected) {
-                     style = "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-500 ring-1 ring-indigo-500";
+                     style = "bg-[#FFFDE7] border-[#FCDC2A] ring-1 ring-[#FCDC2A]";
                 }
 
                 return (
@@ -75,7 +75,7 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
                         key={idx}
                         disabled={showExplanation}
                         onClick={() => setSelected(opt)}
-                        className={`p-4 rounded-2xl border-2 text-left font-medium transition-all ${style}`}
+                        className={`p-4 rounded-2xl border-2 text-left font-medium transition-all text-gray-700 ${style}`}
                     >
                         {opt}
                     </button>
@@ -87,7 +87,7 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
              <button 
                 onClick={handleCheck}
                 disabled={!selected}
-                className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-2xl shadow-lg mt-2 transition-all"
+                className="w-full py-4 bg-[#88D66C] hover:bg-[#76c45b] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-2xl shadow-lg mt-2 transition-all"
              >
                 CHECK ANSWER
              </button>
@@ -95,13 +95,13 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
             <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
-                className="bg-indigo-50 dark:bg-indigo-950/50 p-4 rounded-2xl border border-indigo-100 dark:border-indigo-900"
+                className="bg-[#FFFDE7] p-4 rounded-2xl border border-[#FCDC2A]"
             >
-                <div className="flex items-center gap-2 font-bold text-indigo-700 dark:text-indigo-300 mb-2">
+                <div className="flex items-center gap-2 font-bold text-[#F9A825] mb-2">
                     <CheckCircle2 size={18} />
                     Explanation
                 </div>
-                <p className="text-sm text-indigo-900 dark:text-indigo-200 leading-relaxed">
+                <p className="text-sm text-gray-700 leading-relaxed">
                     {content.explanation}
                 </p>
             </motion.div>
@@ -117,9 +117,9 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
         >
            <button
              onClick={onNext}
-             className="flex flex-col items-center gap-2 text-indigo-500 hover:text-indigo-600 transition-colors group"
+             className="flex flex-col items-center gap-2 text-[#88D66C] hover:text-[#76c45b] transition-colors group"
            >
-              <div className="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 bg-[#88D66C] text-white rounded-full flex items-center justify-center shadow-lg shadow-[#88D66C]/30 group-hover:scale-110 transition-transform">
                   <ChevronDown size={24} className="animate-bounce" />
               </div>
               <span className="text-xs font-bold uppercase tracking-widest">Next</span>

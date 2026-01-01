@@ -60,16 +60,16 @@ function QuizContent() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50 dark:bg-black text-black dark:text-white max-w-md mx-auto relative shadow-2xl overflow-hidden">
+    <div className="flex flex-col h-screen text-gray-800 max-w-md mx-auto relative overflow-hidden">
       {/* Header */}
-      <div className="flex items-center gap-4 p-4 bg-white/90 dark:bg-black/90 backdrop-blur-md z-50 border-b border-gray-100 dark:border-gray-800 sticky top-0 shadow-sm">
-        <button onClick={handleExit} className="text-gray-400 hover:text-gray-600 transition-colors">
+      <div className="flex items-center gap-4 p-4 bg-white/50 backdrop-blur-md z-50 border-b border-white/50 sticky top-0 shadow-sm">
+        <button onClick={handleExit} className="text-gray-400 hover:text-[#88D66C] transition-colors">
             <X size={24} />
         </button>
         {/* Progress Bar */}
-        <div className="flex-1 h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+        <div className="flex-1 h-2 bg-white/50 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full"
+            className="h-full bg-gradient-to-r from-[#FCDC2A] to-[#88D66C] rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ type: "spring", bounce: 0, duration: 0.5 }}
@@ -80,7 +80,7 @@ function QuizContent() {
       {/* Timeline Content Area */}
       <div className="flex-1 overflow-y-auto p-4 pb-32 scroll-smooth relative">
         {/* Central Timeline Line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-800 -translate-x-1/2 z-0" />
+        <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-white/50 -translate-x-1/2 z-0" />
 
         <div className="flex flex-col gap-12">
             <AnimatePresence mode="popLayout">

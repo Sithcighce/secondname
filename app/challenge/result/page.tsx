@@ -27,18 +27,18 @@ function ResultContent() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-indigo-950 text-white overflow-hidden relative">
+    <div className="flex flex-col items-center justify-center min-h-screen overflow-hidden relative">
         {/* Background rays */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20 animate-[spin_10s_linear_infinite]">
+        <div className="absolute inset-0 flex items-center justify-center opacity-30 animate-[spin_20s_linear_infinite]">
              <div className="w-[200vw] h-[200vw] bg-[conic-gradient(from_0deg,transparent_0_20deg,white_20deg_40deg,transparent_40deg_60deg,white_60deg_80deg,transparent_80deg_100deg,white_100deg_120deg,transparent_120deg_140deg,white_140deg_160deg,transparent_160deg_180deg,white_180deg_200deg,transparent_200deg_220deg,white_220deg_240deg,transparent_240deg_260deg,white_260deg_280deg,transparent_280deg_300deg,white_300deg_320deg,transparent_320deg_340deg,white_340deg_360deg)]"></div>
         </div>
 
       <div className="z-10 flex flex-col items-center">
-        <h1 className="text-4xl font-black text-yellow-400 mb-2 drop-shadow-lg tracking-wider">
+        <h1 className="text-4xl font-black text-[#F9A825] mb-2 drop-shadow-sm tracking-wider">
             {stars === 3 ? "PERFECT!" : stars >= 1 ? "GOOD JOB!" : "KEEP TRYING!"}
         </h1>
         
-        <p className="text-white/80 text-lg mb-10 font-medium">
+        <p className="text-gray-700 text-lg mb-10 font-medium">
             Score: {score} / {total}
         </p>
 
@@ -60,7 +60,7 @@ function ResultContent() {
                   <div className="relative">
                      <Star 
                         size={80} 
-                        className={`drop-shadow-2xl transition-colors duration-500 ${isActive ? "text-yellow-400 fill-yellow-400" : "text-gray-600 fill-gray-800"}`}
+                        className={`drop-shadow-xl transition-colors duration-500 ${isActive ? "text-[#FCDC2A] fill-[#FCDC2A]" : "text-gray-300 fill-gray-200"}`}
                         strokeWidth={1}
                      />
                      {isActive && (
@@ -84,7 +84,7 @@ function ResultContent() {
                     animate={{ y: 0, opacity: 1 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => router.push("/")}
-                    className="bg-white text-indigo-900 font-bold text-xl py-4 px-12 rounded-full shadow-xl flex items-center gap-2 hover:bg-gray-100 transition-colors"
+                    className="bg-[#88D66C] text-white font-bold text-xl py-4 px-12 rounded-full shadow-xl flex items-center gap-2 hover:bg-[#76c45b] transition-colors"
                 >
                     <RotateCcw size={24} />
                     Back to Feed

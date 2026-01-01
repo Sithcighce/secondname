@@ -27,13 +27,13 @@ export default function SpeakingQuestion({ content, onComplete }: Props) {
   return (
     <div className="w-full flex flex-col items-center justify-between h-full py-6">
       <div className="w-full">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-8 text-left">
+        <h2 className="text-xl font-bold text-gray-800 mb-8 text-left">
             Speak this sentence
         </h2>
         
         <div className="flex flex-col gap-4 items-center">
-             <div className="p-6 border-2 border-dashed border-gray-300 rounded-2xl w-full text-center">
-                <p className="text-2xl font-medium text-gray-700 dark:text-gray-200">
+             <div className="p-6 border-2 border-dashed border-[#88D66C] bg-[#E8F5E9] rounded-2xl w-full text-center">
+                <p className="text-2xl font-medium text-gray-700">
                     &quot;{content.sentence}&quot;
                 </p>
              </div>
@@ -47,7 +47,7 @@ export default function SpeakingQuestion({ content, onComplete }: Props) {
               {[...Array(5)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="w-2 bg-blue-500 rounded-full"
+                    className="w-2 bg-[#FCDC2A] rounded-full"
                     animate={{ height: [10, 40, 10] }}
                     transition={{ repeat: Infinity, duration: 0.5, delay: i * 0.1 }}
                   />
@@ -58,14 +58,14 @@ export default function SpeakingQuestion({ content, onComplete }: Props) {
         {status === "idle" && (
             <button
                 onClick={startRecording}
-                className="w-24 h-24 rounded-full bg-blue-600 shadow-xl flex items-center justify-center hover:scale-105 transition-transform"
+                className="w-24 h-24 rounded-full bg-[#88D66C] shadow-xl flex items-center justify-center hover:scale-105 transition-transform"
             >
                 <Mic size={40} className="text-white" />
             </button>
         )}
 
         {status === "recording" && (
-             <div className="text-blue-500 font-semibold animate-pulse">Listening...</div>
+             <div className="text-[#88D66C] font-semibold animate-pulse">Listening...</div>
         )}
 
         {status === "success" && (
@@ -74,12 +74,12 @@ export default function SpeakingQuestion({ content, onComplete }: Props) {
                 animate={{ scale: 1, opacity: 1 }}
                 className="w-full"
             >
-                <div className="w-full bg-green-100 dark:bg-green-900/30 p-6 rounded-2xl mb-4 text-center">
-                    <h3 className="text-green-600 font-bold text-2xl">Excellent!</h3>
+                <div className="w-full bg-[#E8F5E9] p-6 rounded-2xl mb-4 text-center">
+                    <h3 className="text-[#88D66C] font-bold text-2xl">Excellent!</h3>
                 </div>
                 <button
                     onClick={onComplete}
-                    className="w-full bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg border-b-4 border-green-800 active:border-b-0 active:translate-y-1 transition-all"
+                    className="w-full bg-[#88D66C] text-white font-bold py-4 rounded-xl shadow-lg border-b-4 border-[#68a652] active:border-b-0 active:translate-y-1 transition-all"
                 >
                     FINISH
                 </button>

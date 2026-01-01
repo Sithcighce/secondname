@@ -77,8 +77,8 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col items-center w-full max-w-md mx-auto relative z-10"
     >
-      <div className="w-full bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700">
-        <h2 className="text-xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+      <div className="w-full bg-white/90 backdrop-blur-sm p-6 rounded-3xl shadow-xl border border-white/50">
+        <h2 className="text-xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#88D66C] to-[#F9A825]">
             Match the words
         </h2>
 
@@ -98,10 +98,11 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
                             onClick={() => setLeftSelected(p.left)}
                             animate={{ 
                                 scale: isSelected ? 1.05 : 1,
-                                backgroundColor: isSelected ? "#8b5cf6" : "#ffffff",
-                                color: isSelected ? "#ffffff" : "#1f2937"
+                                backgroundColor: isSelected ? "#88D66C" : "#ffffff",
+                                color: isSelected ? "#ffffff" : "#374151",
+                                borderColor: isSelected ? "#88D66C" : "#f3f4f6"
                             }}
-                            className="h-14 rounded-xl shadow-sm border-2 border-purple-100 dark:border-gray-700 dark:bg-gray-800 dark:text-white font-medium flex items-center justify-center text-xs"
+                            className="h-14 rounded-xl shadow-sm border-2 font-medium flex items-center justify-center text-xs transition-colors"
                         >
                             {p.left}
                         </motion.button>
@@ -124,10 +125,11 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
                             onClick={() => setRightSelected(p.right)}
                             animate={{ 
                                 scale: isSelected ? 1.05 : 1,
-                                backgroundColor: isSelected ? "#ec4899" : "#ffffff",
-                                color: isSelected ? "#ffffff" : "#1f2937"
+                                backgroundColor: isSelected ? "#FCDC2A" : "#ffffff",
+                                color: isSelected ? "#ffffff" : "#374151",
+                                borderColor: isSelected ? "#FCDC2A" : "#f3f4f6"
                             }}
-                            className="h-14 rounded-xl shadow-sm border-2 border-pink-100 dark:border-gray-700 dark:bg-gray-800 dark:text-white font-medium flex items-center justify-center text-xs"
+                            className="h-14 rounded-xl shadow-sm border-2 font-medium flex items-center justify-center text-xs transition-colors"
                         >
                             {p.right}
                         </motion.button>
@@ -142,7 +144,7 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
                 animate={{ scale: 1, opacity: 1 }}
                 className="mt-6 flex justify-center"
              >
-                 <div className="bg-green-100 text-green-700 px-6 py-2 rounded-full font-bold flex items-center gap-2 border border-green-200 text-sm">
+                 <div className="bg-[#E8F5E9] text-[#88D66C] px-6 py-2 rounded-full font-bold flex items-center gap-2 border border-[#88D66C] text-sm">
                     <Check size={18} />
                     All Matched!
                  </div>
@@ -159,9 +161,9 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
         >
            <button
              onClick={onNext}
-             className="flex flex-col items-center gap-2 text-purple-500 hover:text-purple-600 transition-colors group"
+             className="flex flex-col items-center gap-2 text-[#88D66C] hover:text-[#76c45b] transition-colors group"
            >
-              <div className="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 bg-[#88D66C] text-white rounded-full flex items-center justify-center shadow-lg shadow-[#88D66C]/30 group-hover:scale-110 transition-transform">
                   <ChevronDown size={24} className="animate-bounce" />
               </div>
               <span className="text-xs font-bold uppercase tracking-widest">Finish</span>

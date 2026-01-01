@@ -73,11 +73,11 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
       {/* Card */}
       <div 
         onClick={toggleReveal}
-        className="w-full bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-xl border border-gray-100 dark:border-gray-700 relative overflow-hidden cursor-pointer group active:scale-[0.99] transition-transform"
+        className="w-full bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-white/50 relative overflow-hidden cursor-pointer group active:scale-[0.99] transition-transform"
       >
         <div className="flex flex-col gap-4">
           <div className="flex items-start justify-between gap-4">
-             <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 leading-relaxed">
+             <h2 className="text-xl font-bold text-gray-800 leading-relaxed">
                {content.english}
              </h2>
              <button 
@@ -85,10 +85,10 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
                 disabled={isLoading}
                 className={`p-3 rounded-full flex-shrink-0 transition-colors shadow-sm ${
                   isLoading 
-                    ? "bg-gray-300 dark:bg-gray-600 text-gray-500 cursor-wait" 
+                    ? "bg-gray-200 text-gray-400 cursor-wait" 
                     : isPlaying 
-                    ? "bg-blue-500 text-white" 
-                    : "bg-gray-50 dark:bg-gray-700 text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    ? "bg-[#FCDC2A] text-white" 
+                    : "bg-[#FFFDE7] text-[#F9A825] hover:bg-[#FFF9C4]"
                 }`}
              >
                 <Volume2 size={20} className={isPlaying ? "animate-pulse" : ""} />
@@ -104,8 +104,8 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
                 exit={{ opacity: 0, height: 0 }}
                 className="overflow-hidden"
               >
-                <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
-                  <p className="text-lg text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="text-lg text-gray-600 font-medium leading-relaxed">
                     {content.chinese}
                   </p>
                 </div>
@@ -114,7 +114,7 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
           </AnimatePresence>
           
           {!revealed && (
-             <div className="text-xs text-center text-gray-300 dark:text-gray-600 uppercase font-bold tracking-widest mt-2">
+             <div className="text-xs text-center text-gray-400 uppercase font-bold tracking-widest mt-2">
                 Tap to translate
              </div>
           )}
@@ -130,9 +130,9 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
         >
            <button
              onClick={onNext}
-             className="flex flex-col items-center gap-2 text-blue-500 hover:text-blue-600 transition-colors group"
+             className="flex flex-col items-center gap-2 text-[#88D66C] hover:text-[#76c45b] transition-colors group"
            >
-              <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 bg-[#88D66C] text-white rounded-full flex items-center justify-center shadow-lg shadow-[#88D66C]/30 group-hover:scale-110 transition-transform">
                   <ChevronDown size={24} className="animate-bounce" />
               </div>
               <span className="text-xs font-bold uppercase tracking-widest">Next</span>

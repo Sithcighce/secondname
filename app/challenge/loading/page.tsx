@@ -50,11 +50,11 @@ function LoadingContent() {
             transition={{ duration: 0.5, type: "spring" }}
             className="flex flex-col items-center gap-6"
           >
-            <div className="p-6 bg-white/10 rounded-3xl backdrop-blur-md border border-white/20 shadow-2xl">
-              <CurrentIcon className="w-16 h-16 text-yellow-300 animate-pulse" />
+            <div className="p-6 bg-white/50 rounded-3xl backdrop-blur-md border border-white/50 shadow-xl">
+              <CurrentIcon className="w-16 h-16 text-[#88D66C] animate-pulse" />
             </div>
             
-            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-pink-200">
+            <h2 className="text-2xl font-bold text-gray-700">
               {STEPS[stepIndex].text}
             </h2>
           </motion.div>
@@ -66,7 +66,7 @@ function LoadingContent() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
         >
-             <Loader2 className="animate-spin text-white/50" />
+             <Loader2 className="animate-spin text-[#FCDC2A]" />
         </motion.div>
       </div>
   );
@@ -74,12 +74,12 @@ function LoadingContent() {
 
 export default function LoadingPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-indigo-950 text-white p-6 relative overflow-hidden">
-      {/* Background blobs */}
-      <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-purple-600 rounded-full blur-[100px] opacity-30" />
-      <div className="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] bg-blue-600 rounded-full blur-[100px] opacity-30" />
+    <div className="flex flex-col items-center justify-center min-h-screen p-6 relative overflow-hidden">
+      {/* Background blobs - Optional, but let's keep it subtle or remove since layout has gradient */}
+      <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-[#FCDC2A] rounded-full blur-[100px] opacity-20" />
+      <div className="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] bg-[#88D66C] rounded-full blur-[100px] opacity-20" />
       
-      <Suspense fallback={<div className="text-white">Loading...</div>}>
+      <Suspense fallback={<div className="text-gray-500">Loading...</div>}>
          <LoadingContent />
       </Suspense>
     </div>
