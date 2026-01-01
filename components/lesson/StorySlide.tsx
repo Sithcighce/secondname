@@ -1,11 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, ChevronDown, Check } from "lucide-react";
+import { Volume2, ChevronDown } from "lucide-react";
+
+interface StoryContent {
+  english: string;
+  chinese: string;
+  audio?: string;
+}
 
 interface Props {
-  content: any;
+  content: StoryContent;
   isLast: boolean;
   onNext: () => void;
 }
@@ -14,14 +20,7 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
   const [revealed, setRevealed] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Auto-play audio when this item first appears (if it is the last one added)
-  useEffect(() => {
-    if (isLast) {
-      playAudio();
-    }
-  }, [isLast]);
-
-  const playAudio = () => {
+  const playAudio = useCallback(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       // Stop any currently playing audio
       window.speechSynthesis.cancel();
@@ -41,7 +40,14 @@ export default function StoryItem({ content, isLast, onNext }: Props) {
       setIsPlaying(true);
       setTimeout(() => setIsPlaying(false), 2000);
     }
-  };
+  }, [content.english]);
+
+  // Auto-play audio when this item first appears (if it is the last one added)
+  useEffect(() => {
+    if (isLast) {
+      playAudio();
+    }
+  }, [isLast, playAudio]);
 
   const toggleReveal = () => {
     setRevealed(!revealed);

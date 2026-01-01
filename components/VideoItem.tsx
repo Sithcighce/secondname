@@ -2,8 +2,9 @@
 
 import { useRef, useEffect, useState } from "react";
 import { VideoItem as VideoItemType } from "@/lib/data";
-import { Heart, MessageCircle, Share2, Music2, VolumeX } from "lucide-react";
+import { Heart, MessageCircle, Share2, Music2, VolumeX, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface VideoItemProps {
   data: VideoItemType;
@@ -14,6 +15,25 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(data.likes);
+  const router = useRouter();
+
+  const handleStartChallenge = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent toggling play/pause
+    const quizId = data.quizId || "quiz_default";
+    router.push(`/challenge/loading?quizId=${quizId}`);
+  };
+
+  const toggleLike = () => {
+    if (isLiked) {
+      setLikeCount(prev => prev - 1);
+      setIsLiked(false);
+    } else {
+      setLikeCount(prev => prev + 1);
+      setIsLiked(true);
+    }
+  };
 
   useEffect(() => {
     if (isActive && videoRef.current) {
@@ -29,7 +49,6 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            setIsPlaying(true);
             setIsMuted(false);
           })
           .catch((error) => {
@@ -38,7 +57,6 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
             video.muted = true;
             video.play()
               .then(() => {
-                setIsPlaying(true);
                 setIsMuted(true);
               })
               .catch((e) => console.error("Autoplay failed completely", e));
@@ -46,7 +64,6 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
       }
     } else {
       videoRef.current?.pause();
-      setIsPlaying(false);
     }
   }, [isActive]);
 
@@ -54,10 +71,8 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
-        setIsPlaying(false);
       } else {
         videoRef.current.play();
-        setIsPlaying(true);
       }
     }
   };
@@ -79,6 +94,8 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
         loop
         playsInline
         onClick={togglePlay}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
         // muted attribute is managed by react state/ref
       />
 
@@ -91,6 +108,25 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
               <VolumeX size={20} />
           </button>
       )}
+
+      {/* Start Lesson Button */}
+      <div className="absolute top-12 right-4 z-50">
+        <motion.button
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={handleStartChallenge}
+          className="flex flex-col items-center gap-1 group"
+        >
+          <div className="relative">
+             <div className="absolute inset-0 bg-pink-500 rounded-full blur opacity-75 animate-pulse group-hover:opacity-100 transition-opacity"></div>
+             <div className="relative w-12 h-12 bg-gradient-to-tr from-rose-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+                <Sparkles className="text-white w-6 h-6 animate-pulse" />
+             </div>
+          </div>
+          <span className="text-xs font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Start Lesson</span>
+        </motion.button>
+      </div>
 
       {/* Overlay UI */}
       <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent pt-20 pointer-events-none">
@@ -108,14 +144,15 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
 
       {/* Right Sidebar Actions */}
       <div className="absolute bottom-20 right-2 flex flex-col items-center gap-6 z-10">
-        <ActionIcon icon={Heart} label={data.likes.toString()} color="white" />
+        <ActionIcon 
+          icon={Heart} 
+          label={likeCount.toString()} 
+          color={isLiked ? "#ef4444" : "white"} 
+          fill={isLiked ? "#ef4444" : "transparent"} 
+          onClick={toggleLike}
+        />
         <ActionIcon icon={MessageCircle} label="452" color="white" />
         <ActionIcon icon={Share2} label="Share" color="white" />
-        
-        {/* Rotating Disc Animation (Music) */}
-        <div className="w-10 h-10 rounded-full bg-gray-800 border-2 border-gray-600 flex items-center justify-center overflow-hidden animate-spin-slow mt-4">
-           <div className="w-6 h-6 rounded-full bg-cover bg-center" style={{backgroundImage: 'url(https://github.com/shadcn.png)'}}></div>
-        </div>
       </div>
       
       {/* Play/Pause Indicator (Optional) */}
@@ -130,13 +167,21 @@ export default function VideoItem({ data, isActive }: VideoItemProps) {
   );
 }
 
-function ActionIcon({ icon: Icon, label, color }: { icon: any; label: string; color: string }) {
+interface ActionIconProps {
+  icon: React.ElementType;
+  label: string;
+  color: string;
+  fill?: string;
+  onClick?: () => void;
+}
+
+function ActionIcon({ icon: Icon, label, color, fill = "transparent", onClick }: ActionIconProps) {
   return (
-    <div className="flex flex-col items-center gap-1">
-      <div className="p-2 bg-black/20 rounded-full backdrop-blur-[2px]">
-        <Icon size={28} color={color} fill={color === "red" ? "red" : "transparent"} strokeWidth={1.5} />
+    <button onClick={onClick} className="flex flex-col items-center gap-1 group cursor-pointer">
+      <div className="p-2 bg-black/20 rounded-full backdrop-blur-[2px] transition-transform active:scale-90 group-hover:bg-black/30">
+        <Icon size={28} color={color} fill={fill} strokeWidth={1.5} />
       </div>
       <span className="text-xs font-medium text-white drop-shadow-md">{label}</span>
-    </div>
+    </button>
   );
 }

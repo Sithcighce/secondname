@@ -4,20 +4,30 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Check, ChevronDown } from "lucide-react";
 
+interface Pair {
+  id: string;
+  left: string;
+  right: string;
+}
+
+interface Content {
+  pairs: Pair[];
+}
+
 interface Props {
-  content: any;
+  content: Content;
   isLast: boolean;
   onNext: () => void;
   onScore: (isCorrect: boolean) => void;
 }
 
 export default function MatchingItem({ content, isLast, onNext, onScore }: Props) {
-  const [pairs, setPairs] = useState(content.pairs);
-  const [shuffledRight, setShuffledRight] = useState<any[]>([]); // Random right side
+  const [pairs] = useState<Pair[]>(content.pairs);
+  const [shuffledRight, setShuffledRight] = useState<Pair[]>([]); // Random right side
   const [leftSelected, setLeftSelected] = useState<string | null>(null);
   const [rightSelected, setRightSelected] = useState<string | null>(null);
   const [matched, setMatched] = useState<string[]>([]); // Array of pair IDs
-  const [hasScored, setHasScored] = useState(false);
+  const [hasScored, setHasChecked] = useState(false);
 
   useEffect(() => {
      // Shuffle logic for right column
@@ -31,34 +41,31 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
 
   useEffect(() => {
      if (leftSelected && rightSelected) {
-         checkMatch(leftSelected, rightSelected);
+         // Find pair
+         const pair = pairs.find((p) => p.left === leftSelected && p.right === rightSelected);
+         
+         if (pair) {
+             // Match!
+             const newMatched = [...matched, pair.id];
+             setMatched(newMatched);
+             setLeftSelected(null);
+             setRightSelected(null);
+             
+             // Check if game complete
+             if (newMatched.length === pairs.length && !hasScored) {
+                setHasChecked(true);
+                onScore(true); // Award points for completion
+             }
+         } else {
+             // No match, clear after delay
+             const timer = setTimeout(() => {
+               setLeftSelected(null);
+               setRightSelected(null);
+             }, 500);
+             return () => clearTimeout(timer);
+         }
      }
-  }, [leftSelected, rightSelected]);
-
-  const checkMatch = (leftVal: string, rightVal: string) => {
-      // Find pair
-      const pair = pairs.find((p: any) => p.left === leftVal && p.right === rightVal);
-      
-      if (pair) {
-          // Match!
-          const newMatched = [...matched, pair.id];
-          setMatched(newMatched);
-          setLeftSelected(null);
-          setRightSelected(null);
-          
-          // Check if game complete
-          if (newMatched.length === pairs.length && !hasScored) {
-             setHasScored(true);
-             onScore(true); // Award points for completion
-          }
-      } else {
-          // No match, clear after delay
-          setTimeout(() => {
-            setLeftSelected(null);
-            setRightSelected(null);
-          }, 500);
-      }
-  };
+  }, [leftSelected, rightSelected, pairs, matched, hasScored, onScore]);
 
   const isCompleted = matched.length === pairs.length;
   // Use shuffledRight if available, otherwise fallback to pairs (SSR safety)
@@ -78,7 +85,7 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
         <div className="flex w-full gap-4 justify-between">
             {/* Left Column - Fixed Order */}
             <div className="flex flex-col gap-3 flex-1">
-                {pairs.map((p: any) => {
+                {pairs.map((p) => {
                     const isMatched = matched.includes(p.id);
                     const isSelected = leftSelected === p.left;
                     
@@ -104,7 +111,7 @@ export default function MatchingItem({ content, isLast, onNext, onScore }: Props
 
             {/* Right Column - Randomized */}
             <div className="flex flex-col gap-3 flex-1">
-                {rightDisplay.map((p: any) => {
+                {rightDisplay.map((p) => {
                     const isMatched = matched.includes(p.id);
                     const isSelected = rightSelected === p.right;
                     

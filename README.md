@@ -25,14 +25,30 @@
     *   根据一次答对率计算得分。
     *   结算页动态评星（1-3星）及鼓励语。
 
+## 🤖 后端数据 Pipeline (实验性)
+
+为了实现内容生产的自动化，本项目包含一个独立的 Python 后端工具箱 (`backend_pipeline/`)，用于从原始 MP4 视频自动生成结构化的双语课程 JSON 数据。
+
+### 工作流程
+1.  **视频处理**: 自动提取 MP4 视频中的音轨 (使用 `moviepy` 或 `ffmpeg`)。
+2.  **语音识别 (ASR)**: 调用 **SiliconFlow API** (SenseVoice 模型) 将音频转录为文字稿。
+3.  **智能生成 (LLM)**: 调用 **SiliconFlow API** (Qwen 2.5 72B) 分析文字稿，并严格按照前端所需的 JSON Schema 生成：
+    *   逐句的双语故事 (Story)
+    *   情境选择题 (Quiz)
+    *   词汇连线题 (Matching)
+
+### 使用方法
+详见 `backend_pipeline/README.md`。
+```bash
+# 示例：生成某个视频的课程数据
+python backend_pipeline/generate_lesson.py public/videos/demo.mp4
+```
+
 ## 🛠️ 技术栈
 
-*   **框架**: [Next.js 15 (App Router)](https://nextjs.org/)
-*   **语言**: TypeScript
-*   **样式**: Tailwind CSS v4
-*   **动画**: Framer Motion (负责所有转场、翻转、连线动画)
-*   **图标**: Lucide React
-*   **语音**: Web Speech API (浏览器原生 TTS)
+*   **前端**: [Next.js 15 (App Router)](https://nextjs.org/), TypeScript, Tailwind CSS v4, Framer Motion
+*   **后端脚本**: Python, SiliconFlow API (DeepSeek/Qwen/SenseVoice)
+*   **其他**: Lucide React (图标), Web Speech API (语音合成)
 
 ## 📂 目录结构
 
@@ -52,9 +68,11 @@
 │       ├── QuizSlide.tsx      # 题目卡片
 │       └── MatchingSlide.tsx  # 连线游戏卡片
 ├── lib/
-│   └── data.ts                # Mock 数据中心 (视频+题库)
-└── public/
-    └── videos/                # 本地视频素材
+│   └── data.ts                # 数据中心 (Video + Lesson Mock Data)
+├── public/                    # 静态资源 (视频/图片)
+└── backend_pipeline/          # [New] Python 自动化内容生成工具
+    ├── generate_lesson.py     # 主生成脚本
+    └── MP4_to_MP3.py          # 格式转换工具
 ```
 
 ## 🚀 快速开始

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "type": "story",
+    "content": {
+      "english": "Did you know how casual DIY mascara can be in an Australian bulk store? I found my mascara dried out and couldn't be used anymore. Since the ingredients aren't too complicated, I decided to DIY a new one at the bulk store. The store even provides free containers. I started with the base oil for the mascara, which was coconut yogurt a month ago. Today, I opened a new bucket of shea butter and used my favorite ice cream scoop. 😊 They say adding aloe vera gel to the mascara makes it less likely to flake. Finally, I added the main ingredient of homemade mascara, which is either called almonds or almonds. 😄",
+      "chinese": "你们知道在澳洲的干粮店DIY睫毛膏能有多随吗？我发现我的睫毛膏已经干得不能用了。由于成分并不复杂，我决定在干粮店自制一支新的睫毛膏。这家店还提供免费的瓶子。我先从睫毛膏的底油开始，一个月前这还是干椰酸奶的状态。今天我新开了一桶乳木果油，还用上了我最喜欢的冰淇淋勺。😊听说睫毛膏里加点芦荟胶就不会那么容易起块。最后，我加入了自制睫毛膏的主要成分，也就是那个不知道叫巴旦木还是杏仁的东西。😄",
+      "audio": "mock_audio_generated"
+    }
+  },
+  {
+    "id": "2",
+    "type": "story",
+    "content": {
+      "english": "After preparing all the ingredients, I bought special empty bottles for mascara. I started by soaking the almonds in hot water to make peeling them as easy as breathing. I felt like I had already given two performances today. I put the almonds in a pan and kept stirring according to the recipe until they turned black. Making this mascara really came with the risk of triggering a fire alarm. Then, I had to crush the burnt almonds, which looked just like sesame paste after being mashed. 😊",
+      "chinese": "准备好所有材料后，我又买了专门做睫毛膏的空瓶。先将杏仁泡在热水中，据说这样脱皮就像呼吸一样轻松。感觉今天已经够忙活的了。我把杏仁下入锅中，按照食谱上说的不断翻炒，直至它们变黑。做这个睫毛膏真是冒着火警的风险。然后，我将炒糊的杏仁碾碎，看起来就像芝麻糊一样。😊",
+      "audio": "mock_audio_generated"
+    }
+  },
+  {
+    "id": "3",
+    "type": "story",
+    "content": {
+      "english": "Next, I melted the shea butter over a water bath and began the final mixing. I added some oil and the almond paste. I initially thought I could use a straw to pour the mixture into the molds, but it didn't work. In a moment of inspiration, I used a piping bag. 😊 Despite the mess, I managed to fill nine mascara bottles. Tomorrow morning, I'll try them out when I do my makeup. 😄 Without me telling you, could you tell which eye has been brushed with mascara and which hasn't? 🤔",
+      "chinese": "接着，我用水浴法融化了乳木果油，开始最后的调配。我加入了一些油和杏仁糊。本想用吸管将混合物倒入模具，但吸了半天也没吸进去。急中生智，我用上了裱花袋。😊尽管一地鸡毛，我终于灌满了9根睫毛膏。明天早上化妆时，我会试用一下这些睫毛膏。😄如果不我说，你能分清楚哪只眼睛刷了睫毛膏，哪只没刷吗？🤔",
+      "audio": "mock_audio_generated"
+    }
+  },
+  {
+    "id": "4",
+    "type": "quiz",
+    "content": {
+      "question": "What ingredient is added to the mascara to prevent it from flaking?",
+      "options": [
+        "Aloe vera gel",
+        "Almond paste",
+        "Shea butter",
+        "Coconut yogurt"
+      ],
+      "correctAnswer": "Aloe vera gel",
+      "explanation": "Aloe vera gel is added to the mascara to prevent it from flaking."
+    }
+  },
+  {
+    "id": "5",
+    "type": "quiz",
+    "content": {
+      "question": "What tool did the narrator use to fill the mascara bottles?",
+      "options": [
+        "Straw",
+        "Piping bag",
+        "Spoon",
+        "Syringe"
+      ],
+      "correctAnswer": "Piping bag",
+      "explanation": "The narrator used a piping bag to fill the mascara bottles after the straw didn't work."
+    }
+  },
+  {
+    "id": "6",
+    "type": "match",
+    "content": {
+      "pairs": [
+        {
+          "id": "1",
+          "left": "Aloe vera gel",
+          "right": "芦荟胶"
+        },
+        {
+          "id": "2",
+          "left": "Shea butter",
+          "right": "乳木果油"
+        },
+        {
+          "id": "3",
+          "left": "Almond",
+          "right": "杏仁"
+        },
+        {
+          "id": "4",
+          "left": "Coconut yogurt",
+          "right": "椰酸奶"
+        },
+        {
+          "id": "5",
+          "left": "Piping bag",
+          "right": "裱花袋"
+        }
+      ]
+    }
+  }
+]

@@ -4,8 +4,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mic } from "lucide-react";
 
+interface SpeakingContent {
+  sentence: string;
+}
+
 interface Props {
-  content: any;
+  content: SpeakingContent;
   onComplete: () => void;
 }
 
@@ -30,7 +34,7 @@ export default function SpeakingQuestion({ content, onComplete }: Props) {
         <div className="flex flex-col gap-4 items-center">
              <div className="p-6 border-2 border-dashed border-gray-300 rounded-2xl w-full text-center">
                 <p className="text-2xl font-medium text-gray-700 dark:text-gray-200">
-                    "{content.sentence}"
+                    &quot;{content.sentence}&quot;
                 </p>
              </div>
         </div>

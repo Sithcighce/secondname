@@ -10,19 +10,10 @@ export interface VideoItem {
 
 export const VIDEOS: VideoItem[] = [
   {
-    id: "1",
-    url: "/videos/367185444.mp4",
-    username: "@美妆小天才",
-    description: "只需芦荟胶+眼影，教你自制超自然睫毛膏！纯天然无添加 ✨ #DIY #美妆 #省钱小妙招",
-    likes: 3421,
-    quizId: "lesson_1",
-    layout: "portrait", 
-  },
-  {
     id: "2",
     url: "/videos/791893779.mp4",
     username: "@烘焙日记",
-    description: "爆浆预警！零失败的巧克力熔岩蛋糕，一口沦陷 🍫 做法在评论区！ #甜品 #治愈 #下午茶",
+    description: "AI生成的‘可食用岩浆’也能复刻？土蜂蜜+奥利奥，一口穿越到火山口！🌋 #AI挑战 #黑暗料理还是美食 #创意厨房",
     likes: 12800,
     quizId: "lesson_2",
     layout: "portrait", 
@@ -45,6 +36,15 @@ export const VIDEOS: VideoItem[] = [
     quizId: "lesson_4",
     layout: "landscape", 
   },
+  {
+    id: "1",
+    url: "/videos/367185444.mp4",
+    username: "@美妆小天才",
+    description: "只需芦荟胶+眼影，教你自制超自然睫毛膏！纯天然无添加 ✨ #DIY #美妆 #省钱小妙招",
+    likes: 3421,
+    quizId: "lesson_1",
+    layout: "portrait", 
+  },
 ];
 
 // --- Lesson Structure ---
@@ -65,28 +65,215 @@ export interface Lesson {
 
 // --- Data Definitions ---
 
-// Placeholder for Video 1 (Makeup)
+// Content for Video 1 (Makeup) - Split into sentences
 const LESSON_1_DATA: LessonItem[] = [
   {
     id: "l1_s1",
     type: "story",
     content: {
-      english: "Waiting for content...",
-      chinese: "等待内容...",
+      english: "Did you know how casual DIY mascara can be in an Australian bulk store?",
+      chinese: "你们知道在澳洲的干粮店DIY睫毛膏能有多随吗？",
       audio: "mock_audio_l1_s1"
+    }
+  },
+  {
+    id: "l1_s2",
+    type: "story",
+    content: {
+      english: "I found my mascara dried out and couldn't be used anymore.",
+      chinese: "我发现我的睫毛膏已经干得不能用了。",
+      audio: "mock_audio_l1_s2"
+    }
+  },
+  {
+    id: "l1_s3",
+    type: "story",
+    content: {
+      english: "Since the ingredients aren't too complicated, I decided to DIY a new one at the bulk store.",
+      chinese: "由于成分并不复杂，我决定在干粮店自制一支新的睫毛膏。",
+      audio: "mock_audio_l1_s3"
+    }
+  },
+  {
+    id: "l1_s4",
+    type: "story",
+    content: {
+      english: "The store even provides free containers.",
+      chinese: "这家店还提供免费的瓶子。",
+      audio: "mock_audio_l1_s4"
+    }
+  },
+  {
+    id: "l1_s5",
+    type: "story",
+    content: {
+      english: "I started with the base oil for the mascara, which was coconut yogurt a month ago.",
+      chinese: "我先从睫毛膏的底油开始，一个月前这还是干椰酸奶的状态。",
+      audio: "mock_audio_l1_s5"
+    }
+  },
+  {
+    id: "l1_s6",
+    type: "story",
+    content: {
+      english: "Today, I opened a new bucket of shea butter and used my favorite ice cream scoop. 😊",
+      chinese: "今天我新开了一桶乳木果油，还用上了我最喜欢的冰淇淋勺。😊",
+      audio: "mock_audio_l1_s6"
+    }
+  },
+  {
+    id: "l1_s7",
+    type: "story",
+    content: {
+      english: "They say adding aloe vera gel to the mascara makes it less likely to flake.",
+      chinese: "听说睫毛膏里加点芦荟胶就不会那么容易起块。",
+      audio: "mock_audio_l1_s7"
+    }
+  },
+  {
+    id: "l1_q1",
+    type: "quiz",
+    content: {
+      question: "What ingredient helps prevent the mascara from flaking?",
+      options: [
+        "Aloe vera gel",
+        "Almond paste",
+        "Shea butter",
+        "Coconut yogurt"
+      ],
+      "correctAnswer": "Aloe vera gel",
+      "explanation": "The story mentions that adding aloe vera gel makes the mascara 'less likely to flake.'"
+    }
+  },
+  {
+    id: "l1_s8",
+    type: "story",
+    content: {
+      english: "Finally, I added the main ingredient of homemade mascara: almonds.",
+      chinese: "最后，我加入了自制睫毛膏的主要成分：杏仁。",
+      audio: "mock_audio_l1_s8"
+    }
+  },
+  {
+    id: "l1_s9",
+    type: "story",
+    content: {
+      english: "I soaked them in hot water to peel them, then roasted them in a pan until black.",
+      chinese: "先用热水泡一下去皮，然后下锅炒黑。",
+      audio: "mock_audio_l1_s9"
+    }
+  },
+  {
+    id: "l1_s10",
+    type: "story",
+    content: {
+      english: "Crushed them into a paste—looks just like sesame paste! 😊",
+      chinese: "碾碎成糊——看起来就像芝麻糊一样！😊",
+      audio: "mock_audio_l1_s10"
+    }
+  },
+  {
+    id: "l1_s11",
+    type: "story",
+    content: {
+      english: "Next, I melted the shea butter and mixed everything.",
+      chinese: "接着，我融化了乳木果油并混合所有材料。",
+      audio: "mock_audio_l1_s11"
+    }
+  },
+  {
+    id: "l1_s12",
+    type: "story",
+    content: {
+      english: "I tried using a straw to fill the bottles, but it failed.",
+      chinese: "我试着用吸管灌装，结果失败了。",
+      audio: "mock_audio_l1_s12"
+    }
+  },
+  {
+    id: "l1_s13",
+    type: "story",
+    content: {
+      english: "So I used a piping bag instead! Managed to fill nine bottles.",
+      chinese: "于是我改用裱花袋！终于灌满了9瓶。",
+      audio: "mock_audio_l1_s13"
+    }
+  },
+  {
+    id: "l1_q2",
+    type: "quiz",
+    content: {
+      question: "What tool did she use to successfully fill the mascara bottles?",
+      options: [
+        "A straw",
+        "A piping bag",
+        "A spoon",
+        "A syringe"
+      ],
+      "correctAnswer": "A piping bag",
+      "explanation": "She first tried a straw but it didn't work, so she used a 'piping bag' instead."
+    }
+  },
+  {
+    id: "l1_s14",
+    type: "story",
+    content: {
+      english: "Can you tell which eye has mascara on? 🤔",
+      chinese: "你能分出哪只眼睛刷了睫毛膏吗？🤔",
+      audio: "mock_audio_l1_s14"
+    }
+  },
+  {
+    id: "l1_m1",
+    type: "match",
+    content: {
+      pairs: [
+        { id: "p1", left: "Aloe vera gel", right: "芦荟胶" },
+        { id: "p2", left: "Shea butter", right: "乳木果油" },
+        { id: "p3", left: "Almond", right: "杏仁" },
+        { id: "p4", left: "Piping bag", right: "裱花袋" },
+        { id: "p5", left: "Mascara", right: "睫毛膏" }
+      ]
     }
   }
 ];
 
-// Content for Video 2 (Edible Lava / Baking)
+// Content for Video 2 (Edible Lava / Baking) - Split into sentences
 const LESSON_2_DATA: LessonItem[] = [
   {
     id: "l2_s1",
     type: "story",
     content: {
-      english: "Aya saw an AI-generated “edible lava” video on Bilibili. She giggled: “Humans copying AI copying humans? Same.” So she grabbed her biggest jar of local wild honey. Added red food coloring. Stirred it. “No way—this looks legit!”",
-      chinese: "阿雅在B站刷到一个AI生成的“可食用岩浆”视频。她笑出声：“人类模仿AI模仿人类？我也是。”于是她翻出家里最大的一罐土蜂蜜。加了红色食用色素，搅一搅：“不会吧，这也太像了！”",
+      english: "Aya saw an AI-generated “edible lava” video on Bilibili.",
+      chinese: "阿雅在B站刷到一个AI生成的“可食用岩浆”视频。",
       audio: "mock_audio_l2_s1"
+    }
+  },
+  {
+    id: "l2_s2",
+    type: "story",
+    content: {
+      english: "She giggled: “Humans copying AI copying humans? Same.”",
+      chinese: "她笑出声：“人类模仿AI模仿人类？我也是。”",
+      audio: "mock_audio_l2_s2"
+    }
+  },
+  {
+    id: "l2_s3",
+    type: "story",
+    content: {
+      english: "So she grabbed her biggest jar of local wild honey.",
+      chinese: "于是她翻出家里最大的一罐土蜂蜜。",
+      audio: "mock_audio_l2_s3"
+    }
+  },
+  {
+    id: "l2_s4",
+    type: "story",
+    content: {
+      english: "Added red food coloring. Stirred it. “No way—this looks legit!”",
+      chinese: "加了红色食用色素，搅一搅：“不会吧，这也太像了！”",
+      audio: "mock_audio_l2_s4"
     }
   },
   {
@@ -105,12 +292,30 @@ const LESSON_2_DATA: LessonItem[] = [
     }
   },
   {
-    id: "l2_s2",
+    id: "l2_s5",
     type: "story",
     content: {
-      english: "No electric lights inside—just safe, edible ingredients. She put a tiny LED under the glass bowl. Turn off the lights… BOOM! It’s glowing like real lava!",
-      chinese: "里面不放电路灯——只用能吃的东西。她在玻璃碗底下放了个迷你LED灯。关灯——哇！真的在发光，像岩浆本浆！",
-      audio: "mock_audio_l2_s2"
+      english: "No electric lights inside—just safe, edible ingredients.",
+      chinese: "里面不放电路灯——只用能吃的东西。",
+      audio: "mock_audio_l2_s5"
+    }
+  },
+  {
+    id: "l2_s6",
+    type: "story",
+    content: {
+      english: "She put a tiny LED under the glass bowl.",
+      chinese: "她在玻璃碗底下放了个迷你LED灯。",
+      audio: "mock_audio_l2_s6"
+    }
+  },
+  {
+    id: "l2_s7",
+    type: "story",
+    content: {
+      english: "Turn off the lights… BOOM! It’s glowing like real lava!",
+      chinese: "关灯——哇！真的在发光，像岩浆本浆！",
+      audio: "mock_audio_l2_s7"
     }
   },
   {
@@ -129,21 +334,84 @@ const LESSON_2_DATA: LessonItem[] = [
     }
   },
   {
-    id: "l2_s3",
+    id: "l2_s8",
     type: "story",
     content: {
-      english: "For “volcanic rocks,” she crushed chocolate cookies by hand. Then came the dark chocolate—so hard, like a textbook! She tried to break it… failed. So she dropped it on the counter. Melted it slowly. Poured it over the honey “lava.” Into the fridge it goes—to set for 2 hours.",
-      chinese: "“火山石”？她亲手把巧克力饼干捏碎。接着是黑巧克力——硬得像大学高数课本！她用力掰……失败。干脆往料理台一摔。小心融化，慢慢倒在蜂蜜“岩浆”上。放进冰箱，冷藏两小时定型。",
-      audio: "mock_audio_l2_s3"
+      english: "For “volcanic rocks,” she crushed chocolate cookies by hand.",
+      chinese: "“火山石”？她亲手把巧克力饼干捏碎。",
+      audio: "mock_audio_l2_s8"
     }
   },
   {
-    id: "l2_s4",
+    id: "l2_s9",
     type: "story",
     content: {
-      english: "She filmed the whole process for her next Xiaohongshu post. Caption: “AI said ‘edible volcano.’ I said ‘I got this.’” Her little sister peeked in: “Can I help eat it?” Aya winked: “Only if you promise not to tell Mom I used her good honey.”",
-      chinese: "她录下全过程，准备发小红书。配文：“AI说‘可食用火山’，我说‘这题我会’。”妹妹探头：“我能帮忙吃掉它吗？”阿雅眨眨眼：“只要你答应别告诉妈妈，我用了她珍藏的那罐蜂蜜。”",
-      audio: "mock_audio_l2_s4"
+      english: "Then came the dark chocolate—so hard, like a textbook!",
+      chinese: "接着是黑巧克力——硬得像大学高数课本！",
+      audio: "mock_audio_l2_s9"
+    }
+  },
+  {
+    id: "l2_s10",
+    type: "story",
+    content: {
+      english: "She tried to break it… failed. So she dropped it on the counter.",
+      chinese: "她用力掰……失败。干脆往料理台一摔。",
+      audio: "mock_audio_l2_s10"
+    }
+  },
+  {
+    id: "l2_s11",
+    type: "story",
+    content: {
+      english: "Melted it slowly. Poured it over the honey “lava.”",
+      chinese: "小心融化，慢慢倒在蜂蜜“岩浆”上。",
+      audio: "mock_audio_l2_s11"
+    }
+  },
+  {
+    id: "l2_s12",
+    type: "story",
+    content: {
+      english: "Into the fridge it goes—to set for 2 hours.",
+      chinese: "放进冰箱，冷藏两小时定型。",
+      audio: "mock_audio_l2_s12"
+    }
+  },
+  {
+    id: "l2_s13",
+    type: "story",
+    content: {
+      english: "She filmed the whole process for her next Xiaohongshu post.",
+      chinese: "她录下全过程，准备发小红书。",
+      audio: "mock_audio_l2_s13"
+    }
+  },
+  {
+    id: "l2_s14",
+    type: "story",
+    content: {
+      english: "Caption: “AI said ‘edible volcano.’ I said ‘I got this.’”",
+      chinese: "配文：“AI说‘可食用火山’，我说‘这题我会’。",
+      audio: "mock_audio_l2_s14"
+    }
+  },
+  {
+    id: "l2_s15",
+    type: "story",
+    content: {
+      english: "Her little sister peeked in: “Can I help eat it?”",
+      chinese: "妹妹探头：“我能帮忙吃掉它吗？”",
+      audio: "mock_audio_l2_s15"
+    }
+  },
+  {
+    id: "l2_s16",
+    type: "story",
+    content: {
+      english: "Aya winked: “Only if you promise not to tell Mom I used her good honey.”",
+      chinese: "阿雅眨眨眼：“只要你答应别告诉妈妈，我用了她珍藏的那罐蜂蜜。",
+      audio: "mock_audio_l2_s16"
     }
   },
   {
@@ -158,7 +426,7 @@ const LESSON_2_DATA: LessonItem[] = [
         "Because the dish is too messy"
       ],
       correctAnswer: "Because she used expensive or special honey without asking",
-      explanation: "文中提到她用了 'biggest jar of local wild honey' 和 'Mom\'s good honey'，暗示这是珍贵的蜂蜜。"
+      explanation: "文中提到她用了 'biggest jar of local wild honey' 和 'Mom's good honey'，暗示这是珍贵的蜂蜜。"
     }
   },
   {
@@ -179,22 +447,40 @@ const LESSON_2_DATA: LessonItem[] = [
   }
 ];
 
-// Content for Video 3 (Bartending)
+// Content for Video 3 (Bartending) - Split into sentences
 const LESSON_3_DATA: LessonItem[] = [
   {
     id: "l3_s1",
     type: "story",
     content: {
-      english: "Leo just got a home bartending kit from JD.com. His goal? Impress his friends at the weekend hangout. He watches a Bilibili tutorial: no talking, just sounds.",
-      chinese: "小林刚在京东下单了一套家用调酒套装。目标？周末聚会镇住全场。他打开B站视频：全程没台词，只有声音。",
+      english: "Leo just got a home bartending kit from JD.com.",
+      chinese: "小林刚在京东下单了一套家用调酒套装。",
       audio: "mock_audio_l3_s1"
+    }
+  },
+  {
+    id: "l3_s2",
+    type: "story",
+    content: {
+      english: "His goal? Impress his friends at the weekend hangout.",
+      chinese: "目标？周末聚会镇住全场。",
+      audio: "mock_audio_l3_s2"
+    }
+  },
+  {
+    id: "l3_s3",
+    type: "story",
+    content: {
+      english: "He watches a Bilibili tutorial: no talking, just sounds.",
+      chinese: "他打开B站视频：全程没台词，只有声音。",
+      audio: "mock_audio_l3_s3"
     }
   },
   {
     id: "l3_q1",
     type: "quiz",
     content: {
-      question: "视频里只有摇酒、搅拌和倒酒的声音”最自然的英文是？",
+      question: "“视频里只有摇酒、搅拌和倒酒的声音”最自然的英文是？",
       options: [
         "Only music plays in the video",
         "Only sounds: shaking, stirring, pouring",
@@ -206,12 +492,30 @@ const LESSON_3_DATA: LessonItem[] = [
     }
   },
   {
-    id: "l3_s2",
+    id: "l3_s4",
     type: "story",
     content: {
-      english: "Shake-shake-shake! Ice rattles in the shaker. Then swirl-swirl—he stirs the gin and vermouth slowly. Finally, glug-glug—he pours the liquid into a chilled glass.",
-      chinese: "哗啦哗啦！”冰块在摇酒壶里碰撞。接着“唰唰”——他慢慢搅拌金酒和苦艾酒。最后“咕噜咕噜”——把酒液倒进冰过的杯子。",
-      audio: "mock_audio_l3_s2"
+      english: "Shake-shake-shake! Ice rattles in the shaker.",
+      chinese: "“哗啦哗啦！”冰块在摇酒壶里碰撞。",
+      audio: "mock_audio_l3_s4"
+    }
+  },
+  {
+    id: "l3_s5",
+    type: "story",
+    content: {
+      english: "Then swirl-swirl—he stirs the gin and vermouth slowly.",
+      chinese: "接着“唰唰”——他慢慢搅拌金酒和苦艾酒。",
+      audio: "mock_audio_l3_s5"
+    }
+  },
+  {
+    id: "l3_s6",
+    type: "story",
+    content: {
+      english: "Finally, glug-glug—he pours the liquid into a chilled glass.",
+      chinese: "最后“咕噜咕噜”——把酒液倒进冰过的杯子。",
+      audio: "mock_audio_l3_s6"
     }
   },
   {
@@ -230,21 +534,84 @@ const LESSON_3_DATA: LessonItem[] = [
     }
   },
   {
-    id: "l3_s3",
+    id: "l3_s7",
     type: "story",
     content: {
-      english: "He tries it. The drink is smooth, cold, perfect. He films himself doing the same moves. Posts it on Xiaohongshu: “My first martini. No voice, just vibes.” His crush comments: “Wait… you can make drinks?!” Leo’s heart races faster than his shaker. He texts his buddy: “Dude, the kit was worth it.”",
-      chinese: "他尝了一口：顺滑、冰凉、绝了。他录下自己复刻全过程。发到小红书：“人生第一杯马天尼。无台词，纯氛围。”他暗恋的人评论：“等等……你还会调酒？！”小林心跳比摇酒壶还快。他火速发消息给兄弟：“兄弟，这套装血赚。”",
-      audio: "mock_audio_l3_s3"
+      english: "He tries it. The drink is smooth, cold, perfect.",
+      chinese: "他尝了一口：顺滑、冰凉、绝了。",
+      audio: "mock_audio_l3_s7"
     }
   },
   {
-    id: "l3_s4",
+    id: "l3_s8",
     type: "story",
     content: {
-      english: "But later, alone in his room, he stares at the empty glass. His cat jumps on the table, sniffs the shaker. Leo sighs: “Sorry, Mimi. You’re not 18. No cocktail for you.”",
-      chinese: "可夜深人静，他盯着空酒杯发呆。猫跳上桌子，闻了闻摇酒壶。小林叹气：“抱歉咪咪，你还没成年，不能喝酒。”",
-      audio: "mock_audio_l3_s4"
+      english: "He films himself doing the same moves.",
+      chinese: "他录下自己复刻全过程。",
+      audio: "mock_audio_l3_s8"
+    }
+  },
+  {
+    id: "l3_s9",
+    type: "story",
+    content: {
+      english: "Posts it on Xiaohongshu: “My first martini. No voice, just vibes.”",
+      chinese: "发到小红书：“人生第一杯马天尼。无台词，纯氛围。”",
+      audio: "mock_audio_l3_s9"
+    }
+  },
+  {
+    id: "l3_s10",
+    type: "story",
+    content: {
+      english: "His crush comments: “Wait… you can make drinks?!”",
+      chinese: "他暗恋的人评论：“等等……你还会调酒？！”",
+      audio: "mock_audio_l3_s10"
+    }
+  },
+  {
+    id: "l3_s11",
+    type: "story",
+    content: {
+      english: "Leo’s heart races faster than his shaker.",
+      chinese: "小林心跳比摇酒壶还快。",
+      audio: "mock_audio_l3_s11"
+    }
+  },
+  {
+    id: "l3_s12",
+    type: "story",
+    content: {
+      english: "He texts his buddy: “Dude, the kit was worth it.”",
+      chinese: "他火速发消息给兄弟：“兄弟，这套装血赚。”",
+      audio: "mock_audio_l3_s12"
+    }
+  },
+  {
+    id: "l3_s13",
+    type: "story",
+    content: {
+      english: "But later, alone in his room, he stares at the empty glass.",
+      chinese: "可夜深人静，他盯着空酒杯发呆。",
+      audio: "mock_audio_l3_s13"
+    }
+  },
+  {
+    id: "l3_s14",
+    type: "story",
+    content: {
+      english: "His cat jumps on the table, sniffs the shaker.",
+      chinese: "猫跳上桌子，闻了闻摇酒壶。",
+      audio: "mock_audio_l3_s14"
+    }
+  },
+  {
+    id: "l3_s15",
+    type: "story",
+    content: {
+      english: "Leo sighs: “Sorry, Mimi. You’re not 18. No cocktail for you.”",
+      chinese: "小林叹气：“抱歉咪咪，你还没成年，不能喝酒。”",
+      audio: "mock_audio_l3_s15"
     }
   },
   {
@@ -263,12 +630,12 @@ const LESSON_3_DATA: LessonItem[] = [
     }
   },
   {
-    id: "l3_s5",
+    id: "l3_s16",
     type: "story",
     content: {
       english: "Mimi meows, knocks over the ice bucket, and walks away like a tiny, judgmental bartender.",
       chinese: "咪咪“喵”了一声，打翻冰桶，像个迷你又傲娇的调酒师，扬长而去。",
-      audio: "mock_audio_l3_s5"
+      audio: "mock_audio_l3_s16"
     }
   },
   {

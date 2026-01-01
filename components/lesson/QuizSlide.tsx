@@ -1,11 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { HelpCircle, CheckCircle2, ChevronDown } from "lucide-react";
 
+interface QuizContent {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  explanation: string;
+}
+
 interface Props {
-  content: any;
+  content: QuizContent;
   isLast: boolean;
   onNext: () => void;
   onScore: (isCorrect: boolean) => void;
@@ -14,18 +21,15 @@ interface Props {
 export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
   const [showExplanation, setShowExplanation] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
-  const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
-  const [hasChecked, setHasChecked] = useState(false);
-
-  // Shuffle options on mount
-  useEffect(() => {
+  const [shuffledOptions] = useState<string[]>(() => {
     const options = [...content.options];
     for (let i = options.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [options[i], options[j]] = [options[j], options[i]];
     }
-    setShuffledOptions(options);
-  }, [content.options]);
+    return options;
+  });
+  const [hasChecked, setHasChecked] = useState(false);
 
   const handleCheck = () => {
       setShowExplanation(true);
@@ -35,9 +39,6 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
           onScore(isCorrect);
       }
   };
-
-  // Use original options if shuffle hasn't happened yet (SSR safety)
-  const displayOptions = shuffledOptions.length > 0 ? shuffledOptions : content.options;
 
   return (
     <motion.div 
@@ -55,7 +56,7 @@ export default function QuizItem({ content, isLast, onNext, onScore }: Props) {
          </h3>
 
         <div className="flex flex-col gap-3">
-            {displayOptions.map((opt: string, idx: number) => {
+            {shuffledOptions.map((opt: string, idx: number) => {
                 const isSelected = selected === opt;
                 const isCorrect = opt === content.correctAnswer;
                 
